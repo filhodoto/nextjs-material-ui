@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import Navigation from '../components/ui/Navigation';
 
-const Home = () => {
+const Home = (): JSX.Element => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,6 +14,7 @@ const Home = () => {
         <h1 className={styles.title}>
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
+        <Navigation />
       </main>
 
       <footer className={styles.footer}>
