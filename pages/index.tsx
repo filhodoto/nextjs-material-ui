@@ -1,33 +1,18 @@
+import { Grid } from '@material-ui/core';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import Navigation from '../components/ui/Navigation';
+import theme from '../styles/utils/theme';
 
 const Home = (): JSX.Element => {
   return (
-    <div className={styles.container}>
+    <Grid container component='main' direction='column' alignItems='center'>
       <Head>
-        <title>Create Next App</title>
+        <title>Homepage</title>
         <link rel='icon' href='/favicon.ico' />
+        <meta name='theme-color' content={theme.palette.primary.main} />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href='https://nextjs.org'>Next.js!</a>
-        </h1>
-        <Navigation />
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{' '}
-          <img src='/vercel.svg' alt='Vercel Logo' className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      <h1>Homepage</h1>
+    </Grid>
   );
 };
+
 export default Home;
