@@ -17,7 +17,6 @@ const Navigation = (): JSX.Element => {
   return (
     <Box component='div' m={1}>
       {dummyLinks.map(({ label, link }) => {
-        console.log(label);
         return (
           <Link key={label} href={link} passHref>
             <Button variant='contained' color='primary'>

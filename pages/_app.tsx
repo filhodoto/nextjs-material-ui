@@ -6,11 +6,28 @@ import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 // Utils
-import theme from '../styles/utils/theme';
-import Navigation from '../components/ui/Navigation';
-import { Container } from '@material-ui/core';
+import theme from 'styles/utils/theme';
+
+import { useRouter } from 'next/dist/client/router';
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
+  const router = useRouter();
+
+  // TODO:: Make work on first render, it shows homepage first
+  // Check this for solution https://nextjs.org/docs/authentication#authenticating-server-rendered-pages
+  useEffect(() => {
+    if (typeof pageProps.authenticated !== 'undefined') {
+      if (!pageProps.authenticated) {
+        // If it's not authenticated send to sign in page
+        router.push('/sigin');
+      } else {
+        console.log('defined and authenticated');
+      }
+    } else {
+      console.log('not defined');
+    }
+  }, [pageProps, router]);
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -30,10 +47,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container maxWidth='xl'>
-          <Navigation />
-          <Component {...pageProps} />
-        </Container>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
